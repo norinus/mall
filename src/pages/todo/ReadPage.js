@@ -21,9 +21,10 @@ const ReadPage = () => {
         navigate(
             {
                 pathname: `/todo/modify/${tno}`,
+                search:queryStr, // 쿼리 파라미터 추가
             }
         )
-    },[tno,page,size])
+    },[navigate,queryStr])
 
 
     const moveList = useCallback(() => {
@@ -33,7 +34,7 @@ const ReadPage = () => {
                 search :queryStr
             }
         )
-    },[page,size])
+    },[navigate, queryStr])
 
 
     return (
