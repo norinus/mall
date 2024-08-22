@@ -26,7 +26,7 @@ const ReadPage = () => {
     },[tno,page,size])
 
 
-    const moveList = useCallback((tno) => {
+    const moveList = useCallback(() => {
         navigate(
             {
                 pathname: `/todo/list`,
