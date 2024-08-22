@@ -6,7 +6,7 @@ const ModifyPage =(tno)=>{
 
     const navigate = useNavigate();
 
-    const moveRead =()=>{
+    const moveRead =(tno)=>{
         navigate({
             pathname:`/todo/read/${tno}`
         })
