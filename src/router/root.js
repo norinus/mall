@@ -1,4 +1,4 @@
-import {Suspense, lazy} from "react";
+import {lazy, Suspense} from "react";
 import todoRouter from "./todoRouter";
 
 import {createBrowserRouter} from "react-router-dom";
@@ -25,7 +25,5 @@ const root = createBrowserRouter([
     },
 
 ])
-
-
 
 export default root;
