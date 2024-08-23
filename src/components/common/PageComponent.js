@@ -2,10 +2,14 @@ import React from 'react';
 
 const PageComponent = ({serverData, movePage}) => {
 
+    /**
+     * 페이지네이션 계산
+     * @returns {{next: boolean, current: *, pagesNumList: *[], lastPage: number, nextPage: *, prev: boolean, start: number, end: (number|number), prevPage: number}}
+     */
     const calculatePagination = () => {
 
         //페이지정보 추출
-        const {number, totalElements, size, first, last} = serverData;
+        const {number, totalElements, size} = serverData;
 
         // 페이지 번호 0부터 출발하기 때문에 +1 함
         const currentPage = number + 1;
@@ -24,22 +28,18 @@ const PageComponent = ({serverData, movePage}) => {
 
         //이전 페이지 있는 지
         const prev = start > 1;
-        
+
         //다음 페이지 있는지
         const next = end < lastPage;
 
         //이전 페이지 번호
-        const prevPage = prev ? start - 1 : null;
+        const prevPage = prev ? start  : null;
+
         //다음 페이지 번호
         const nextPage = next ? end + 1 : null;
 
         //페이지 번호 넣기
-        const pagesNumList = [];
-
-        for (let i = start; i <= end; i++) {
-            pagesNumList.push(i);
-        }
-
+        const pagesNumList = Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
         return {start, end, prev, next, prevPage, nextPage, pagesNumList, lastPage, current: currentPage};
     };

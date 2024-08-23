@@ -41,9 +41,10 @@ const AddComponent =()=>{
 
 
     return(
-        <div className="border-2 border-sky-200 mt-10 m-2 p-4">
+        <div className={'border-2 border-sky-200 mt-10 m-2 p-4'}>
             {/**모달처리*/}
-            {result ? <ResultModal title={'Add Result'} content={`New ${result} Added`} callbackFn={closeModal} />:<></>}
+            {result ?
+                <ResultModal title={'Add Result'} content={`New ${result} Added`} callbackFn={closeModal}/> : <></>}
             <div className="flex justify-center">
                 <div className="relative mb-4 flex w-full flex-warp items-stretch">
                     <div className="w-1/5 p-6 text-right font-bold">
@@ -74,8 +75,10 @@ const AddComponent =()=>{
                 </div>
             </div>
             <div className="flex justify-end">
-                <div className="relative mb-4 flex w-full flex-warp items-stretch">
-                    <button type={"button"} className="rounded p-4 w-36 bg-blue-500 text-xl text-white" onClick={handlerClickAdd}>추가</button>
+                <div className="relative mb-4 flex p-4 flex-warp items-stretch">
+                    <button type={"button"} className="rounded p-4 w-36 bg-blue-500 text-xl text-white"
+                            onClick={handlerClickAdd}>추가
+                    </button>
                 </div>
             </div>
         </div>
