@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {createSearchParams, useNavigate, useParams, useSearchParams} from "react-router-dom";
+import {createSearchParams, useNavigate, useSearchParams} from "react-router-dom";
 
 const getNum = (param, defaultValue) => {
     if (!param) {
@@ -25,13 +25,13 @@ const useCustomMove = () => {
 
         let queryStr = ""
 
-
-        console.log(pageParam)
-
         if (pageParam) {
 
+            //springboot 페이지 0 부터 시작함
             let pageNum = getNum(pageParam.page, page)
+
             const sizeNum = getNum(pageParam.size, size)
+
             queryStr = createSearchParams({page: pageNum - 1, size: sizeNum}).toString()
 
         } else {

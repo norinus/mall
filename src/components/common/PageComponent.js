@@ -47,32 +47,37 @@ const PageComponent = ({serverData, movePage}) => {
     const {start, end, prev, next, prevPage, nextPage, pagesNumList, lastPage, current} = calculatePagination();
 
     return (
+
         <div className="m-6 flex justify-center">
-            {prev ?
-                <div
-                    className="m-2 p-2 w-16 text-center font-bold text-blue-400"
-                    onClick={() => movePage({page: prevPage - 1})}
-                >
-                    Prev
-                </div>
-                : <></>}
-            {pagesNumList.map(pageNum => (
-                <div
-                    key={pageNum}
-                    className={`m-2 p-2 w-12 text-center rounded shadow-md text-white ${current === pageNum ? 'bg-gray-500' : 'bg-blue-400'}`}
-                    onClick={() => movePage({page: pageNum})}
-                >
-                    {pageNum}
-                </div>
-            ))}
-            {next ?
-                <div
-                    className="m-2 p-2 w-16 text-center font-bold text-blue-400"
-                    onClick={() => movePage({page: nextPage})}
-                >
-                    Next
-                </div>
-                : <></>}
+            {
+                prev ?
+                    <div
+                        className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer"
+                        onClick={() => movePage({page: prevPage - 1})}>
+                        이전
+                    </div>
+                    : <></>
+            }
+            {
+                pagesNumList.map(pageNum => (
+                    <div
+                        key={pageNum}
+                        className={`m-2 p-2 w-12 text-center rounded shadow-md text-white cursor-pointer ${current === pageNum ? 'bg-gray-500' : 'bg-blue-400'}`}
+                        onClick={() => movePage({page: pageNum})}
+                    >
+                        {pageNum}
+                    </div>
+                ))
+            }
+            {
+                next ?
+                    <div
+                        className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer"
+                        onClick={() => movePage({page: nextPage})}>
+                        다음
+                    </div>
+                    : <></>
+            }
         </div>
     );
 }

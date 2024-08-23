@@ -7,9 +7,9 @@ const ReadPage = () => {
     const {tno} = useParams()
 
     return (
-        <div className="font-extrabold w-full bg-white mt-6">
-            <div className="text-2xl">
-                Todo Read Page Component {tno}
+        <div className={'p-4 w-full bg-white'}>
+            <div className={'text-3xl font-extrabold'}>
+                Todo Read Page
             </div>
             <ReadComponent tno={tno}></ReadComponent>
         </div>
