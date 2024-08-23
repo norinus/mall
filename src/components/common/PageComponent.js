@@ -33,13 +33,13 @@ const PageComponent = ({serverData, movePage}) => {
         const next = end < lastPage;
 
         //이전 페이지 번호
-        const prevPage = prev ? start  : null;
+        const prevPage = prev ? start : null;
 
         //다음 페이지 번호
         const nextPage = next ? end + 1 : null;
 
         //페이지 번호 넣기
-        const pagesNumList = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+        const pagesNumList = Array.from({length: end - start + 1}, (_, i) => start + i);
 
         return {start, end, prev, next, prevPage, nextPage, pagesNumList, lastPage, current: currentPage};
     };

@@ -13,60 +13,60 @@ const getNum = (param, defaultValue) => {
 const useCustomMove = () => {
 
     const navigate = useNavigate()
-    const[refresh ,setRefresh] = useState(false)
+    const [refresh, setRefresh] = useState(false)
     const [queryParams] = useSearchParams()
 
-    const page = getNum(queryParams.get("page"),0)
-    const size = getNum(queryParams.get("size"),10)
+    const page = getNum(queryParams.get("page"), 0)
+    const size = getNum(queryParams.get("size"), 10)
 
     const queryDefault = createSearchParams({page, size}).toString()
 
-    const moveToList=(pageParam)=>{
+    const moveToList = (pageParam) => {
 
-        let queryStr =""
+        let queryStr = ""
 
 
         console.log(pageParam)
 
-        if(pageParam){
+        if (pageParam) {
 
             let pageNum = getNum(pageParam.page, page)
             const sizeNum = getNum(pageParam.size, size)
-            queryStr = createSearchParams({page: pageNum-1, size:sizeNum}).toString()
+            queryStr = createSearchParams({page: pageNum - 1, size: sizeNum}).toString()
 
-        }else{
+        } else {
             queryStr = queryDefault
         }
 
         navigate({
             pathname: `../list`,
-            search:queryStr
+            search: queryStr
         })
 
         setRefresh(!refresh)
     }
 
 
-    const  moveToModify =(num)=>{
+    const moveToModify = (num) => {
         console.log(queryDefault)
         navigate({
             pathname: `../modify/${num}`,
-            search:queryDefault
+            search: queryDefault
         })
     }
 
-    const moveToRead=(num)=>{
+    const moveToRead = (num) => {
 
         console.log(queryParams)
 
         navigate({
             pathname: `../read/${num}`,
-            search:queryDefault
+            search: queryDefault
         })
 
     }
 
-    return {moveToList, moveToModify, moveToRead, page,size,refresh}
+    return {moveToList, moveToModify, moveToRead, page, size, refresh}
 }
 
 

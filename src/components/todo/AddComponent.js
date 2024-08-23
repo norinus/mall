@@ -4,43 +4,43 @@ import ResultModal from "../common/ResultModal";
 import useCustomMove from "../hooks/useCustomMove";
 
 const initState = {
-    title:'',
-    writer:'',
+    title: '',
+    writer: '',
     dueDate: ''
 }
 
-const AddComponent =()=>{
+const AddComponent = () => {
 
-    const[todo, setTodo] =useState({...initState})
+    const [todo, setTodo] = useState({...initState})
 
-    const [result,setResult] = useState(null)
+    const [result, setResult] = useState(null)
 
-    const{ moveToList } = useCustomMove()
+    const {moveToList} = useCustomMove()
 
-    const handleChangeTodo =(e)=>{
-        todo[e.target.name] =e.target.value
+    const handleChangeTodo = (e) => {
+        todo[e.target.name] = e.target.value
         setTodo({...todo})
     }
 
-    const handlerClickAdd =()=>{
+    const handlerClickAdd = () => {
         console.log(todo);
-        postAdd(todo).then(result=>{
+        postAdd(todo).then(result => {
             console.log(result)
             setTodo({...initState})
             setResult(result.TNO)
-        }).catch(err=>{
+        }).catch(err => {
             console.error(err)
         })
 
     }
 
-    const closeModal =()=>{
+    const closeModal = () => {
         setResult(null)
         moveToList()
     }
 
 
-    return(
+    return (
         <div className={'border-2 border-sky-200 mt-10 m-2 p-4'}>
             {/**모달처리*/}
             {result ?

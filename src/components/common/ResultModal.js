@@ -15,11 +15,11 @@ const ResultModal = ({title, content, callbackFn}) => {
                 </div>
                 <div className="justify-end flex ">
                     <button className="rounded bg-blue-500 mt-4 mb-4 px-6 pt-4 pb-4 text-lg textwhite"
-                        onClick={() => {
-                            if (callbackFn) {
-                                callbackFn()
-                            }
-                        }}>Close Modal
+                            onClick={() => {
+                                if (callbackFn) {
+                                    callbackFn()
+                                }
+                            }}>Close Modal
                     </button>
                 </div>
             </div>

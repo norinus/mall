@@ -1,9 +1,9 @@
-import { useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 import UpdateComponent from "../../components/todo/UpdateComponent";
 
 
-const ModifyPage =()=>{
+const ModifyPage = () => {
 
     const {tno} = useParams()
 
@@ -13,7 +13,7 @@ const ModifyPage =()=>{
             <div className={'text-3xl font-extrabold'}>
                 Todo Modify Page
             </div>
-            <UpdateComponent tno={tno} />
+            <UpdateComponent tno={tno}/>
         </div>
     );
 }

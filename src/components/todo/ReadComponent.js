@@ -45,7 +45,6 @@ const ReadComponent = ({tno}) => {
                     </button>
                 </div>
             </div>
-
         </div>
     )
 }

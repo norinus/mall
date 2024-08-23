@@ -15,7 +15,7 @@ const UpdateComponent = ({tno}) => {
 
     const [todo, setTodo] = useState({...initState})
 
-    const [result,setResult] = useState(null)
+    const [result, setResult] = useState(null)
 
     const {moveToList, moveToRead} = useCustomMove()
 
@@ -27,26 +27,26 @@ const UpdateComponent = ({tno}) => {
 
     }, [tno])
 
-    
+
     const handleUpdate = () => {
-        updateOne(todo).then(data=>{
-            console.log("업데이트 결과 : {}",data)
+        updateOne(todo).then(data => {
+            console.log("업데이트 결과 : {}", data)
             setResult('Modified')
         })
     }
 
 
     const closeModal = () => {
-        if(result==='Modified'){
+        if (result === 'Modified') {
             moveToRead(tno)
-        }else{
+        } else {
             moveToList()
         }
     }
 
     const handleDelete = () => {
-        deleteOne(tno).then(data=>{
-            console.log("삭제 결과 : {}",data)
+        deleteOne(tno).then(data => {
+            console.log("삭제 결과 : {}", data)
             setResult('Deleted')
         })
     }
@@ -66,7 +66,7 @@ const UpdateComponent = ({tno}) => {
     return (
         <div className={'border-2 border-sky-200 mt-10 m-2 p-4'}>
 
-            {result ? <ResultModal title={'처리결과'} content={result} callbackFn={closeModal}></ResultModal>:<></>}
+            {result ? <ResultModal title={'처리결과'} content={result} callbackFn={closeModal}></ResultModal> : <></>}
 
             <div className={'flex justify-center mt-10'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
@@ -115,7 +115,8 @@ const UpdateComponent = ({tno}) => {
                     <div className={'w-1/5 p-6 text-right font-bold'}>
                         Complate
                     </div>
-                    <select name={'status'} className={'border-solid border-2 rounded m-1 p-2'} onChange={handleChangeTodoComplete} value={todo.complete? 'Y':'N'}>
+                    <select name={'status'} className={'border-solid border-2 rounded m-1 p-2'}
+                            onChange={handleChangeTodoComplete} value={todo.complete ? 'Y' : 'N'}>
                         <option value="Y">Complate</option>
                         <option value="N">Not Yet</option>
                     </select>
@@ -125,7 +126,8 @@ const UpdateComponent = ({tno}) => {
 
             <div className={'flex justify-end p-4'}>
                 <button type={'button'}
-                        className={'inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500'} onClick={handleDelete}> 삭제
+                        className={'inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500'}
+                        onClick={handleDelete}> 삭제
                 </button>
                 <button type={'button'}
                         className={'rounded p-4 m-2 text-xl w-32 text-white bg-blue-500'} onClick={handleUpdate}> 수정

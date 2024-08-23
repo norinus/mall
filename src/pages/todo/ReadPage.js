@@ -8,9 +8,9 @@ const ReadPage = () => {
 
     return (
         <div className="font-extrabold w-full bg-white mt-6">
-           <div className="text-2xl">
-               Todo Read Page Component {tno}
-           </div>
+            <div className="text-2xl">
+                Todo Read Page Component {tno}
+            </div>
             <ReadComponent tno={tno}></ReadComponent>
         </div>
 
