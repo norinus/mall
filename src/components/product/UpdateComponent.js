@@ -48,7 +48,8 @@ const UpdateComponent = ({pno}) => {
         for (const element of files) {
             formData.append('files', element);
         }
-        formData.append('pno', product.pno)
+
+        formData.append('pno', pno)
         formData.append('pname', product.pname);
         formData.append('price', product.price);
         formData.append('description', product.description);
@@ -158,7 +159,7 @@ const UpdateComponent = ({pno}) => {
                     </div>
                     <input ref={uploadRef}
                            className={'w-4/t p-6 rounded-r border border-solid shadow-md border-neutral-300'}
-                           type={'file'} multiple={true}/>
+                           type={'file'} multiple={true} accept={'image/*'} />
                 </div>
             </div>
             <div className={'flex justify-center'}>
