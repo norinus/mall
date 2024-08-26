@@ -11,7 +11,7 @@ const ModifyPage = () => {
     return (
         <div className={'p-4 w-full bg-white'}>
             <div className={'text-3xl font-extrabold'}>
-                Todo Modify Page
+                상품 수정 컴포넌트
             </div>
             <UpdateComponent pno={pno}/>
         </div>

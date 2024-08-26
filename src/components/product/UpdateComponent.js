@@ -10,7 +10,7 @@ const initState = {
     price: 0,
     description: '',
     isDeleted: false,
-    uploadFileNames:[]
+    uploadFileNames: []
 }
 
 const host = API_SERVER_HOST;
@@ -21,11 +21,11 @@ const UpdateComponent = ({pno}) => {
 
     const [result, setResult] = useState(null)
 
-    const[fetching, setFetching] = useState(false)
+    const [fetching, setFetching] = useState(false)
 
     const {moveToList, moveToRead} = useCustomMove()
 
-    const  uploadRef = useRef()
+    const uploadRef = useRef()
 
     useLayoutEffect(() => {
 
@@ -45,7 +45,7 @@ const UpdateComponent = ({pno}) => {
 
         const formData = new FormData()
 
-        for(const element of files) {
+        for (const element of files) {
             formData.append('files', element);
         }
         formData.append('pno', product.pno)
@@ -54,13 +54,13 @@ const UpdateComponent = ({pno}) => {
         formData.append('description', product.description);
         formData.append('isDeleted', product.isDeleted);
 
-        for(const fileName of product.uploadFileNames) {
+        for (const fileName of product.uploadFileNames) {
             formData.append('uploadFileNames', fileName);
         }
 
         setFetching(true)
 
-        updateOne(pno,formData).then(data => {
+        updateOne(pno, formData).then(data => {
             setFetching(false)
             console.log("업데이트 결과 : {}", data)
             setResult('Modified')
@@ -88,13 +88,10 @@ const UpdateComponent = ({pno}) => {
     }
 
 
-    const deletedOldImages =(imageName)=>{
+    const deletedOldImages = (imageName) => {
         product.uploadFileNames = product.uploadFileNames.filter(fileName => fileName !== imageName)
         setProduct({...product})
     }
-
-
-
 
 
     return (
@@ -181,18 +178,17 @@ const UpdateComponent = ({pno}) => {
                     }
                 </div>
             </div>
-
-                <div className={'flex justify-end p-4'}>
-                    <button type={'button'}
-                            className={'inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500'}
-                            onClick={handleDelete}> 삭제
-                    </button>
-                    <button type={'button'}
-                            className={'rounded p-4 m-2 text-xl w-32 text-white bg-blue-500'} onClick={handleUpdate}> 수정
-                    </button>
-                </div>
+            <div className={'flex justify-end p-4'}>
+                <button type={'button'}
+                        className={'inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500'}
+                        onClick={handleDelete}> 삭제
+                </button>
+                <button type={'button'}
+                        className={'rounded p-4 m-2 text-xl w-32 text-white bg-blue-500'} onClick={handleUpdate}> 수정
+                </button>
             </div>
-            );
-            }
+        </div>
+    );
+}
 
-            export default UpdateComponent;
+export default UpdateComponent;
