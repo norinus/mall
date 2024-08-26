@@ -1,37 +1,59 @@
 import {useLayoutEffect, useState} from "react"
-import {getOne} from "../../api/todoApi"
+import {getOne,API_SERVER_HOST} from "../../api/productApi"
 import useCustomMove from "../hooks/useCustomMove";
+import FetchingModal from "../common/FatchingModal";
+
 
 const initState = {
-    tno: 0,
-    title: '',
-    writer: '',
-    dueDate: null,
-    complete: false,
+    pno: 0,
+    pname: '',
+    price: 0,
+    description:'',
+    uploadFileNames: [],
 }
 
-const ReadComponent = ({tno}) => {
+const  host = API_SERVER_HOST;
 
-    const [todo, setTodo] = useState(initState)
+const ReadComponent = ({pno}) => {
+
+    const [product, setProduct] = useState(initState)
 
     const {moveToList, moveToModify} = useCustomMove()
 
+    const [fetching, setFetching] = useState(false)
+
+
     useLayoutEffect(() => {
-        getOne(tno).then(data => {
+
+        setFetching(true)
+
+        getOne(pno).then(data => {
             console.log(data)
-            setTodo(data)
+            setFetching(false)
+            setProduct(data)
         })
 
-    }, [tno])
+    }, [pno])
+
 
     return (
         <div className={'border-2 border-sky-200 mt-10 m-2 p-4'}>
-            {makeDiv('글번호', todo.tno)}
-            {makeDiv('작성자', todo.writer)}
-            {makeDiv('제목', todo.title)}
-            {makeDiv('할일마감일', todo.dueDate)}
-            {makeDiv('완료상태', todo.complete ? 'Completed' : 'Not Yet')}
+            {fetching?<FetchingModal/>:<></>}
+
+            {makeDiv('글번호', product.pno)}
+            {makeDiv('상품명', product.pname)}
+            {makeDiv('상품가격', product.price)}
+            {makeDiv('상품설명', product.description)}
             {/**버튼 새아**/}
+
+            <div className={'w-full justify-center flex flex-col m-auto items-center'}>
+                {
+                    product.uploadFileNames.map(
+                        (imageFile,index) =>
+                            <img alt={'product'} key={index} src={`${host}/api/products/view/${imageFile}`}/>
+                    )
+                }
+            </div>
 
             <div className={'flex justify-end'}>
                 <div className={'relative mb-4 flex p-4 flex-warp items-stretch'}>
@@ -40,7 +62,7 @@ const ReadComponent = ({tno}) => {
                         리스트
                     </button>
                     <button type="button" className={'rounded p-4 m-2 text-xl w-32 text-white bg-red-500'}
-                            onClick={() => moveToModify(tno)}>
+                            onClick={() => moveToModify(pno)}>
                         수정
                     </button>
                 </div>

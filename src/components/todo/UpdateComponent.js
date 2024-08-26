@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useLayoutEffect, useState} from "react";
 import {deleteOne, getOne, updateOne} from "../../api/todoApi";
 import useCustomMove from "../hooks/useCustomMove";
 import ResultModal from "../common/ResultModal";
@@ -19,7 +19,7 @@ const UpdateComponent = ({tno}) => {
 
     const {moveToList, moveToRead} = useCustomMove()
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         getOne(tno).then(data => {
             setTodo(data)
@@ -62,7 +62,6 @@ const UpdateComponent = ({tno}) => {
         setTodo({...todo})
     }
 
-
     return (
         <div className={'border-2 border-sky-200 mt-10 m-2 p-4'}>
 
@@ -71,18 +70,17 @@ const UpdateComponent = ({tno}) => {
             <div className={'flex justify-center mt-10'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
                     <div className={'w-1/5 p-6 text-right font-bold'}>
-                        TNO
+                        번호
                     </div>
                     <div className={'w-4/5 p-6 rounded-r border border-solid shadow-md bg-gray-100'}>
                         {todo.tno}
                     </div>
                 </div>
             </div>
-
             <div className={'flex justify-center'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
                     <div className={'w-1/5 p-6 text-right font-bold'}>
-                        Writer
+                        작성자
                     </div>
                     <div className={'w-4/5 p-6 rounded-r border border-solid shadow-md bg-gray-100'}>
                         {todo.writer}
@@ -92,7 +90,7 @@ const UpdateComponent = ({tno}) => {
             <div className={'flex justify-center'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
                     <div className={'w-1/5 p-6 text-right font-bold'}>
-                        Title
+                        제목
                     </div>
                     <input className={'w-4/5 p-6 rounded-r border border-solid shadow-md border-neutral-300'}
                            name="title" type={'text'} value={todo.title} onChange={handleChangeTodo}>
@@ -102,18 +100,17 @@ const UpdateComponent = ({tno}) => {
             <div className={'flex justify-center'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
                     <div className={'w-1/5 p-6 text-right font-bold'}>
-                        DueDate
+                        할일 마감일
                     </div>
                     <input className={'w-4/5 p-6 rounded-r border border-solid shadow-md border-neutral-300'}
                            name="title" type={'date'} value={todo.dueDate} onChange={handleChangeTodo}>
                     </input>
                 </div>
             </div>
-
             <div className={'flex justify-center'}>
                 <div className={'relative mb-4 flex w-full flex-wrap items-stretch'}>
                     <div className={'w-1/5 p-6 text-right font-bold'}>
-                        Complate
+                        완료 상태
                     </div>
                     <select name={'status'} className={'border-solid border-2 rounded m-1 p-2'}
                             onChange={handleChangeTodoComplete} value={todo.complete ? 'Y' : 'N'}>
@@ -122,8 +119,6 @@ const UpdateComponent = ({tno}) => {
                     </select>
                 </div>
             </div>
-
-
             <div className={'flex justify-end p-4'}>
                 <button type={'button'}
                         className={'inline-block rounded p-4 m-2 text-xl w-32 text-white bg-red-500'}

@@ -47,12 +47,11 @@ const PageComponent = ({serverData, movePage}) => {
     const {start, end, prev, next, prevPage, nextPage, pagesNumList, lastPage, current} = calculatePagination();
 
     return (
-
-        <div className="m-6 flex justify-center">
+        <div className={'m-6 flex justify-center'}>
             {
                 prev ?
                     <div
-                        className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer"
+                        className={'m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer'}
                         onClick={() => movePage({page: prevPage - 1})}>
                         이전
                     </div>
@@ -72,7 +71,7 @@ const PageComponent = ({serverData, movePage}) => {
             {
                 next ?
                     <div
-                        className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer"
+                        className={'m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer'}
                         onClick={() => movePage({page: nextPage})}>
                         다음
                     </div>
