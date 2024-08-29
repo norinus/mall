@@ -1,4 +1,4 @@
-import axios from "axios";
+import jwtAxios from "../util/jwtUtils";
 
 export const API_SERVER_HOST = "http://localhost:8080";
 
@@ -11,7 +11,7 @@ const prefix = `${API_SERVER_HOST}/api/products`;
  */
 export const productAdd = async (product) => {
     const headers = {headers:{"Content-Type":"multipart/form-data"}}
-    const res = await axios.post(`${prefix}/`,product,headers);
+    const res = await jwtAxios.post(`${prefix}/`,product,headers);
     return res.data;
 }
 
@@ -21,7 +21,7 @@ export const productAdd = async (product) => {
  * @returns {Promise<any>}
  */
 export const getOne = async (pno) => {
-    const res = await axios.get(`${prefix}/${pno}`)
+    const res = await jwtAxios.get(`${prefix}/${pno}`)
     console.log(res.data);
     return res.data;
 }
@@ -33,7 +33,7 @@ export const getOne = async (pno) => {
  */
 export const getList = async (pageParam) => {
     const {page, size} = pageParam
-    const res = await axios.get(`${prefix}/list`,{params:{page:page,size:size}});
+    const res = await jwtAxios.get(`${prefix}/list`,{params:{page:page,size:size}});
     return res.data;
 }
 
@@ -43,7 +43,7 @@ export const getList = async (pageParam) => {
  * @returns {Promise<any>}
  */
 export const deleteOne = async (pno) =>{
-    const res = await axios.delete(`${prefix}/${pno}`);
+    const res = await jwtAxios.delete(`${prefix}/${pno}`);
     return res.data;
 }
 
@@ -54,6 +54,6 @@ export const deleteOne = async (pno) =>{
  */
 export const updateOne =async (pno,product) =>{
     const headers = {headers:{"Content-Type":"multipart/form-data"}}
-    const res = await axios.put(`${prefix}/${pno}`, product,headers)
+    const res = await jwtAxios.put(`${prefix}/${pno}`, product,headers)
     return res.data;
 }
